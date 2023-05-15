@@ -27,6 +27,7 @@ final class ArgumentsBuilder
                     'suffix=',
                     'exclude=',
                     'log-pmd=',
+                    'log-github',
                     'fuzzy',
                     'min-lines=',
                     'min-tokens=',
@@ -50,6 +51,7 @@ final class ArgumentsBuilder
         $exclude          = [];
         $suffixes         = ['.php'];
         $pmdCpdXmlLogfile = null;
+        $githubLogOutput  = false;
         $linesThreshold   = 5;
         $tokensThreshold  = 70;
         $editDistance     = 5;
@@ -74,6 +76,11 @@ final class ArgumentsBuilder
 
                 case '--log-pmd':
                     $pmdCpdXmlLogfile = $option[1];
+
+                    break;
+
+                case '--log-github':
+                    $githubLogOutput = true;
 
                     break;
 
@@ -137,6 +144,7 @@ final class ArgumentsBuilder
             $suffixes,
             $exclude,
             $pmdCpdXmlLogfile,
+            $githubLogOutput,
             $linesThreshold,
             $tokensThreshold,
             $fuzzy,

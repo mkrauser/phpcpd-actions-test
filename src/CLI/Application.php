@@ -9,6 +9,7 @@
  */
 namespace SebastianBergmann\PHPCPD;
 
+use SebastianBergmann\PHPCPD\Log\Github;
 use const PHP_EOL;
 use function count;
 use function printf;
@@ -86,6 +87,10 @@ final class Application
             (new PMD($arguments->pmdCpdXmlLogfile()))->processClones($clones);
         }
 
+        if($arguments->githubLogOutput()) {
+            (new Github())->processClones($clones);
+        }
+
         print (new ResourceUsageFormatter)->resourceUsage($timer->stop()) . PHP_EOL;
 
         return count($clones) > 0 ? 1 : 0;
@@ -136,6 +141,7 @@ Options for analysing files:
 Options for report generation:
 
   --log-pmd <file>  Write log in PMD-CPD XML format to <file>
+  --log-github      Write log to stdout formatted to create github pr annotations
 
 EOT;
     }
