@@ -9,7 +9,6 @@
  */
 namespace SebastianBergmann\PHPCPD;
 
-use SebastianBergmann\PHPCPD\Log\Github;
 use const PHP_EOL;
 use function count;
 use function printf;
@@ -19,6 +18,7 @@ use SebastianBergmann\PHPCPD\Detector\Strategy\AbstractStrategy;
 use SebastianBergmann\PHPCPD\Detector\Strategy\DefaultStrategy;
 use SebastianBergmann\PHPCPD\Detector\Strategy\StrategyConfiguration;
 use SebastianBergmann\PHPCPD\Detector\Strategy\SuffixTreeStrategy;
+use SebastianBergmann\PHPCPD\Log\Github;
 use SebastianBergmann\PHPCPD\Log\PMD;
 use SebastianBergmann\PHPCPD\Log\Text;
 use SebastianBergmann\Timer\ResourceUsageFormatter;
@@ -87,7 +87,7 @@ final class Application
             (new PMD($arguments->pmdCpdXmlLogfile()))->processClones($clones);
         }
 
-        if($arguments->githubLogOutput()) {
+        if ($arguments->githubLogOutput()) {
             (new Github())->processClones($clones);
         }
 
@@ -100,7 +100,7 @@ final class Application
     {
         printf(
             'phpcpd %s by Sebastian Bergmann.' . PHP_EOL,
-            (new Version(self::VERSION, dirname(__DIR__)))->getVersion()
+            (new Version(self::VERSION, dirname(__DIR__)))->asString()
         );
     }
 

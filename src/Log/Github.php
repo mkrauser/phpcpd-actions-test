@@ -18,17 +18,16 @@ final class Github
     {
         foreach ($clones as $clone) {
             foreach ($clone->files() as $file) {
-
                 $metas = [
-                    'file' => $file->name(),
-                    'line' => $file->startLine(),
+                    'file'    => $file->name(),
+                    'line'    => $file->startLine(),
                     'endline' => $file->startLine() + $clone->numberOfLines(),
                 ];
                 array_walk($metas, static function (&$value, string $key): void {
                     $value = sprintf('%s=%s', $key, (string) $value);
                 });
-                $message = "Duplicated code detected";
-                printf('::error %s::%s', implode(',', $metas), $message).PHP_EOL;
+                $message = 'Duplicated code detected';
+                printf('::error %s::%s', implode(',', $metas), $message) . PHP_EOL;
             }
 
             print PHP_EOL;
