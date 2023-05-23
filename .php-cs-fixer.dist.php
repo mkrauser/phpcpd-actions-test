@@ -53,7 +53,28 @@ $config->setFinder($finder)
                 'yield',
             ],
         ],
-        'braces' => true,
+        'control_structure_braces' => true,
+        'curly_braces_position' => [
+            'allow_single_line_anonymous_functions' => true,
+            'allow_single_line_empty_anonymous_classes' => true
+        ],
+        'control_structure_continuation_position' => true,
+        'declare_parentheses' => true,
+        'statement_indentation' => true,
+        'no_multiple_statements_per_line' => true,
+        'no_extra_blank_lines' => ['tokens' => [
+            'attribute',
+            'case',
+            'continue',
+            'curly_brace_block',
+            'default',
+            'extra',
+            'parenthesis_brace_block',
+            'square_brace_block',
+            'switch',
+            'throw',
+            'use'
+        ]],
         'cast_spaces' => true,
         'class_attributes_separation' => [
             'elements' => [
@@ -148,8 +169,7 @@ $config->setFinder($finder)
         'no_superfluous_phpdoc_tags' => [
             'allow_mixed' => true,
         ],
-        'no_trailing_comma_in_list_call' => true,
-        'no_trailing_comma_in_singleline_array' => true,
+        'no_trailing_comma_in_singleline' => true,
         'no_trailing_whitespace' => true,
         'no_trailing_whitespace_in_comment' => true,
         'no_trailing_whitespace_in_string' => true,
@@ -261,7 +281,7 @@ $config->setFinder($finder)
         'single_import_per_statement' => true,
         'single_line_after_imports' => true,
         'single_quote' => true,
-        'single_space_after_construct' => true,
+        'single_space_around_construct' => true,
         'single_trait_insert_per_statement' => true,
         'space_after_semicolon' => true,
         'standardize_increment' => true,
