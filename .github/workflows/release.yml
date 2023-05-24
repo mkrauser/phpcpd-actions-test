@@ -33,7 +33,7 @@ jobs:
         run: "composer install ${{ env.COMPOSER_FLAGS }}"
 
       - name: Build phar file
-        run: "php -d phar.readonly=0 bin/compile"
+        run: "php -d phar.readonly=0 bin/build"
 
       - name: Create release
         id: create_release
