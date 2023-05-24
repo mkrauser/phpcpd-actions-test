@@ -55,8 +55,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./composer.phar
-          asset_name: composer.phar
+          asset_path: ./phpcpd.phar
+          asset_name: phpcpd.phar
           asset_content_type: application/octet-stream
 
 #      - name: Configure GPG key and sign phar
