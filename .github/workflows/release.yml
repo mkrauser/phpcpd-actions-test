@@ -32,8 +32,11 @@ jobs:
       - name: "Install dependencies"
         run: "composer install ${{ env.COMPOSER_FLAGS }}"
 
+      - name: "Get Tag Name"
+        uses: olegtarasov/get-tag@v2.1.2
+        id: tagName
       - name: Build phar file
-        run: "php -d phar.readonly=0 bin/build ${{ github.ref }}"
+        run: "php -d phar.readonly=0 bin/build -v${{ steps.tagName.outputs.tag }}"
 
       - name: Create release
         id: create_release
